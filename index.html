@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butnariu Luis Alexandru - Student IESC CALC II</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Butnariu Luis Alexandru</h1>
+        <p>Facultatea IESC</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="https://elearning.unitbv.ro/user/profile.php">Despre Mine</a></li>
+            <li><a href="#education">Educație</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+     <script>
+       alert("Hello World");
+    </script> 
+    <script src="js/contact_form.js"></script> 
+
+    <main>
+        <section id="about">
+            <h2>Despre Mine</h2>
+            <div class="image-container">
+                <img src="images/image.jpeg" alt="Portret eu" loading="lazy" width="200" height="200">
+            </div>
+            <p>
+                Salut!
+            </p>
+        </section>
+
+        <section id="education">
+            <h2>Educație</h2>
+            <ol>
+                <li>Liceul Teoretic GEP</li>
+                <li>Universitatea Transilvania, Facultatea IESC, Calc anul II undergraduate </li>
+                
+            </ol>
+        </section>
+    </main>
+
+    <aside>
+        <h3>Hobby-uri & Citate</h3>
+        <p><strong>Hobby-uri:</strong> Gaming, Photografia, Aviatie.</p>
+        <blockquote>
+            "Not wishing for anything is the the same as not wanting to be alive" - Eighty Six
+        </blockquote>
+    </aside>
+
+    <footer>
+        <p>&copy; 2006 Butariu. Toate drepturile rezervate.</p>
+        <script src=”js/contact_form.js”></script> 
+        <section id="contact">
+            <h3>Contactează-mă</h3>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="nume">Nume:</label>
+                    <input type="text" id="nume" name="nume" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mesaj">Mesaj:</label>
+                    <textarea id="mesaj" name="mesaj" rows="4" required minlength="10"></textarea>
+                </div>
+
+                <button type="submit" onclick="submitForm()">Trimite Mesaj </button>
+            </form>
+        </section>
+    </footer>
+
+</body>
+</html>
