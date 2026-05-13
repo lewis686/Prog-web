@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
-import Navbar from './components/Navbar'; // Sau unde ai tu Navbar-ul
-import Footer from './Footer'; // Aici am importat Footer-ul
+import Navbar from './Navbar'; 
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import About from './pages/About'; // Am importat pagina About
+import About from './pages/About'; 
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 

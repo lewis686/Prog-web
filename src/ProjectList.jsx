@@ -6,7 +6,7 @@ function ProjectList() {
     const [error, setError] = useState(null);
     const [search, setSearch] = useState('');
     useEffect(function() { 
-        fetch('/data/projects.json') 
+        fetch('http://localhost:3000/api/projects')
             .then(function(response) { 
                 return response.json(); 
             }) 
@@ -22,7 +22,7 @@ function ProjectList() {
     }, []); 
  
     if (loading) { 
-        return <p>Se incarca...</p>; 
+        return <p>Loading</p>; 
     } 
     if (error) {
     return <p>{error}</p>;
@@ -32,7 +32,7 @@ function ProjectList() {
             <h3>Proiecte</h3> 
             <input
                 type="text"
-                placeholder="Caută proiect după titlu..."
+                placeholder="Cauta proiect dupa titlu..."
                 value={search}
                 onChange={function(e) {
                     setSearch(e.target.value);

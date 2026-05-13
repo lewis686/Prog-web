@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/dashboard')
+ .then(function() {
+ console.log('Conectat la MongoDB!');
+ })
+ .catch(function(err) {
+ console.error('Eroare conectare MongoDB:', err);
+ });
 
-// Exercițiul 4, Pasul 1: Middleware-ul pentru JSON. 
-// Acest lucru TREBUIE să fie înaintea rutelor POST/PUT, altfel serverul nu știe să citească corpul cererii!
 app.use(express.json());
-
-// Date (temporar in memorie)
 const projects = [
   { id: 1, title: "Pagina Personala", tech: "HTML, CSS", done: true },
   { id: 2, title: "Calculator Buget", tech: "JS", done: true },
@@ -24,8 +28,7 @@ app.get('/api/projects', function(req, res) {
   res.json(projects);
 });
 
-// Exercițiul 3: GET /api/stats 
-// (Atenție! Aceasta ruta trebuie să fie ÎNAINTEA rutei cu :id, altfel Express va crede că "stats" este un ID!)
+// ex 3 
 app.get('/api/stats', function(req, res) {
   const total = projects.length;
   const finalizate = projects.filter(p => p.done === true).length;
@@ -34,7 +37,7 @@ app.get('/api/stats', function(req, res) {
   res.json({ total, finalizate, inLucru });
 });
 
-// Exercițiul 3: GET /api/projects/:id - returnează un singur proiect
+// ex 3
 app.get('/api/projects/:id', function(req, res) {
   const projectId = parseInt(req.params.id);
   const project = projects.find(p => p.id === projectId);
@@ -45,7 +48,7 @@ app.get('/api/projects/:id', function(req, res) {
   res.json(project);
 });
 
-// Exercițiul 4: POST /api/projects - adauga un proiect nou
+// ex 4
 app.post('/api/projects', function(req, res) {
   const newProject = {
     id: projects.length + 1,
@@ -57,7 +60,7 @@ app.post('/api/projects', function(req, res) {
   res.status(201).json(newProject);
 });
 
-// Exercițiul 5: DELETE /api/projects/:id - șterge un proiect
+//ex 5
 app.delete('/api/projects/:id', function(req, res) {
   const projectId = parseInt(req.params.id);
   const index = projects.findIndex(p => p.id === projectId);
@@ -70,7 +73,7 @@ app.delete('/api/projects/:id', function(req, res) {
   res.json({ message: 'Deleted' });
 });
 
-// Porneste serverul (Pune mereu asta la finalul fisierului!)
+// Porneste serverul 
 app.listen(PORT, function() {
   console.log('Server pornit pe http://localhost:' + PORT);
 });
