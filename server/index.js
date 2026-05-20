@@ -68,7 +68,28 @@ app.delete('/api/projects/:id', async function(req, res) {
     res.status(400).json({ error: 'Invalid ID format' });
   }
 });
-
+app.put('/api/projects/:id', async function(req, res) {
+  try {
+    const updated = await Project.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true } 
+    );
+    if (!updated) return res.status(404).json({ error: 'Not found' });
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+app.get('/api/stats', async function(req, res) {
+  try {
+    const total = await Project.countDocuments();
+    const done = await Project.countDocuments({ done: true });
+    res.json({ total: total, done: done, inProgress: total - done });
+  } catch (err) {
+    res.status(500).json({ error: 'Eroare server: ' + err });
+  }
+});
 app.listen(PORT, function() {
   console.log('Server pornit pe http://localhost:' + PORT);
 });
